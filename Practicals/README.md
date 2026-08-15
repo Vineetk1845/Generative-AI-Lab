@@ -1,70 +1,141 @@
-# Image Classification using CNN and Transfer Learning
+# Practical No. 01 – Image Classification using CNN and Transfer Learning
 
-**Practical No-01**
-**Course:** Generative AI Lab
-**Department:** CSE (AIML), T.Y. Tech
-**Institution:** MIT Academy of Engineering, Alandi, Pune
+**Course:** `Generative AI Lab`
 
-**Student:** *[Enter Your Name]*
-**Student ID:** *[Enter Your ID]*
-**Date of Submission:** *[Enter Date]*
+**Department:** `CSE (AIML)` | **Class:** `T.Y. Tech`
+
+**Student:** `Vineet Kaldate`  
+
+**PRN:** `202401110074`  
+
+**Date:** `15/08/26`  
+
+**Group Members:** `Rameshwar Sanap`, `Sameer Sirsath`
+
 
 ## Objective
 
-Implement an image classification pipeline using a Convolutional Neural Network (CNN): train a CNN
-from scratch, fine-tune a pretrained transfer learning model (MobileNetV2), and compare the
-performance of both models on the same dataset.
+Implemented an image classification pipeline using two different approaches:
 
-## Reference Paper
+- CNN trained from scratch
+- Transfer learning using a pretrained MobileNetV2 model
 
-**Pre-trained deep learning models for brain MRI image classification**
-Krishnapriya & Karuna, *Frontiers in Human Neuroscience*, 2023.
-[DOI: 10.3389/fnhum.2023.1150120](https://doi.org/10.3389/fnhum.2023.1150120)
-
-The paper fine-tuned four pretrained ImageNet backbones (VGG-19, VGG-16, ResNet50, Inception V3)
-on a small brain-tumor MRI dataset, finding VGG-19 performed best (99.48% accuracy). See the
-notebook's "Research Paper Summary" section for full details. This project follows the same
-general idea — comparing a from-scratch model against a pretrained/fine-tuned one on the same data
-— applied to a general-purpose image classification benchmark.
+The performance of both models was evaluated and compared on the same dataset.
 
 ## Dataset
 
-**CIFAR-10** (`tf.keras.datasets.cifar10`) — 60,000 32x32 color images across 10 classes. Loads
-automatically, no manual download required. A 5,000/1,000 train/test subset is used by default to
-keep training time reasonable; the full dataset can be enabled in the notebook.
+Used the **CIFAR-10 dataset**, which contains 60,000 color images belonging to 10 classes.
 
-## Models Compared
+The classes include:
 
-| Model | Description |
-|---|---|
-| CNN From Scratch | 3 conv blocks (Conv2D + BatchNorm + MaxPool), randomly initialized, trained end-to-end |
-| MobileNetV2 (Transfer Learning) | ImageNet-pretrained backbone, frozen head training followed by fine-tuning of top layers |
+- Airplane
+- Automobile
+- Bird
+- Cat
+- Deer
+- Dog
+- Frog
+- Horse
+- Ship
+- Truck
 
-## How to Run
+For this implementation, a subset of the dataset was used to keep the training process manageable in Google Colab.
 
-1. Open `Practical_Assignment_1_CNN_TransferLearning.ipynb` in Google Colab.
-2. `Runtime > Change runtime type > GPU` (T4 or better recommended).
-3. `Runtime > Run all`. Expect ~15–25 minutes total runtime.
+- Training images used: 5,000
+- Testing images used: 1,000
+- Training split: 4,500 images
+- Validation split: 500 images
+- Image size: 32 × 32 × 3
 
-## Results
+The images were normalized, class labels were one-hot encoded, and data augmentation was applied during training. :contentReference[oaicite:1]{index=1}
 
-*(Fill in after running: test accuracy and loss for both models, from the notebook's Task 3
-output.)*
+Dataset: https://www.cs.toronto.edu/~kriz/cifar.html
+
+## Model 1: CNN From Scratch
+
+A custom CNN was built and trained from randomly initialized weights.
+
+The architecture consists of:
+
+- 3 convolutional blocks
+- Batch Normalization
+- Max Pooling
+- Dense layer with 128 neurons
+- Dropout
+- Softmax output layer with 10 classes
+
+Data augmentation using random flipping, rotation, and zoom was also applied during training.
+
+The model was trained using the Adam optimizer with categorical cross-entropy loss and a batch size of 32. Early stopping and learning-rate reduction were used during training. :contentReference[oaicite:2]{index=2}
+
+## Model 2: Transfer Learning with MobileNetV2
+
+A pretrained **MobileNetV2** model with ImageNet weights was used for transfer learning.
+
+The CIFAR-10 images were resized from 32 × 32 to 96 × 96 and processed using the MobileNetV2 preprocessing function.
+
+The model was trained in two stages:
+
+1. The pretrained MobileNetV2 base was initially frozen and a new classification head was trained.
+2. The top approximately 30 layers of MobileNetV2 were then unfrozen and fine-tuned using a lower learning rate.
+
+This allowed the pretrained model to adapt its learned features to the CIFAR-10 classification task. :contentReference[oaicite:3]{index=3} :contentReference[oaicite:4]{index=4}
+
+## Model Evaluation
+
+Both models were evaluated on the same 1,000-image test set using:
+
+- Test accuracy
+- Test loss
+- Precision
+- Recall
+- F1-score
+- Confusion matrix
+
+### Results
 
 | Model | Test Accuracy | Test Loss |
-|---|---|---|
-| CNN From Scratch | | |
-| MobileNetV2 (Transfer Learning) | | |
+|---|---:|---:|
+| CNN From Scratch | **57.50%** | 1.2577 |
+| MobileNetV2 Transfer Learning | **80.80%** | 0.5903 |
 
-See `/screenshots` for training curves, confusion matrices, and the model comparison chart.
+The MobileNetV2 transfer learning model performed significantly better than the CNN trained from scratch. :contentReference[oaicite:5]{index=5}
 
-## Repository Contents
+## Classification Performance
 
-- `Practical_Assignment_1_CNN_TransferLearning.ipynb` — full notebook (paper summary, both models, evaluation, comparison)
-- `screenshots/` — performance metric screenshots
-- `README.md` — this file
+The MobileNetV2 model achieved an overall accuracy of approximately **81%**, while the CNN from scratch achieved approximately **57%** on the test set.
+
+The classification reports were generated for all 10 CIFAR-10 classes, along with confusion matrices for both models. :contentReference[oaicite:6]{index=6}
+
+## Comparison with Reference Paper
+
+The reference research paper studied pretrained CNN models for brain MRI image classification and reported strong performance from transfer learning models.
+
+In this practical, the same general idea was explored using **CIFAR-10** instead of brain MRI images and **MobileNetV2** instead of the architectures used in the paper.
+
+The results from this implementation also show the advantage of transfer learning: MobileNetV2 achieved **80.80%**, compared with **57.50%** from the CNN trained from scratch.
+
+## Visualizations
+
+The implementation includes:
+
+- Sample CIFAR-10 images
+- Training accuracy and loss curves
+- Confusion matrices for both models
+- Model accuracy comparison chart
+
+## Conclusion
+
+A CNN was successfully implemented and trained from scratch, and a pretrained MobileNetV2 model was fine-tuned using transfer learning on the CIFAR-10 dataset.
+
+The CNN from scratch achieved **57.50% test accuracy**, while the MobileNetV2 transfer learning model achieved **80.80%**.
+
+The comparison demonstrates that using a pretrained model can provide better performance than training a CNN from random initialization, particularly when working with a relatively small training subset.
 
 ## Declaration
 
-I confirm that the work in this repository is my own and was completed following academic
-integrity guidelines.
+I, **Vineet Kaldate**, confirm that the work submitted in this assignment is my own and has been completed following academic integrity guidelines.
+
+**GitHub Repository:** https://github.com/Vineetk1845/Generative-AI-Lab
+
+**Signature:** Vineet Manohar Kaldate

@@ -1,11 +1,16 @@
 # Practice Lab Assignment 1 – Neural Network Implementation from Scratch
 
-**Course:** Generative AI Lab
-**Department:** CSE (AIML) | **Class:** T.Y. Tech
-**Student:** Vineet Kaldate
-**PRN:** 202401110074
-**Batch:** A3
-**Date:** 15/08/26
+**Course:** `Generative AI Lab`
+
+**Department:** `CSE (AIML)` | **Class:** `T.Y. Tech`
+
+**Student:** `Vineet Kaldate`
+
+**PRN:** `202401110074`
+
+**Batch:** `A3`
+
+**Date:** `15/08/26`
 
 ## Objective
 

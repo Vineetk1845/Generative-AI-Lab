@@ -1,18 +1,18 @@
 # Practice Lab Assignment 1 – Neural Network Implementation from Scratch
 
-**Course:** Generative AI Lab
+**Course:** `Generative AI Lab`
 
-**Department:** CSE (AIML) | **Class:** T.Y. Tech
+**Department:** `CSE (AIML)` | **Class:** `T.Y. Tech`
 
-**Institution:** MIT Academy of Engineering, Alandi, Pune
+**Institution:** `MIT Academy of Engineering, Alandi, Pune`
 
-**Student Name:** Vineet Kaldate
+**Student Name:** `Vineet Kaldate`
 
-**PRN Number:** 202401110074
+**PRN Number:** `202401110074`
 
-**Batch:** A3
+**Batch:** `A3`
 
-**Date of Submission:** 15/08/26
+**Date of Submission:** `15/08/26`
 
 ---
 

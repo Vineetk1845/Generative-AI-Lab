@@ -12,7 +12,7 @@
 
 **Date:** `15/08/26`
 
----
+
 ## Objective
 
 Implemented a simple **feedforward neural network from scratch using Python and NumPy** without using TensorFlow, PyTorch, or Keras.

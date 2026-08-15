@@ -215,24 +215,8 @@ The model achieved a **94.44% test accuracy**, while the comparable scikit-learn
 
 ---
 
-## 13. Repository Contents
 
-```text
-├── FirstName_LastName_GenerativeAILabAssignment.ipynb
-├── screenshots/
-│   ├── training_loss.png
-│   ├── confusion_matrix.png
-│   └── model_comparison.png
-└── README.md
-```
-
-* **Jupyter Notebook:** Complete implementation, training, evaluation, and analysis.
-* **screenshots/:** Important output visualizations and performance results.
-* **README.md:** Overview of the assignment, methodology, and results.
-
----
-
-## 14. Declaration
+## 13. Declaration
 
 I, **Vineet Kaldate**, confirm that the work submitted in this assignment is my own and has been completed following academic integrity guidelines.
 
